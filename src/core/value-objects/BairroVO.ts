@@ -13,7 +13,7 @@ export class BairroVO {
 
   private static formatar(nome: string): string {
     return nome
-      .normalize('NFD') 
+      .normalize('NFD')
       .replace(/[\u0300-\u036f]/g, '')
       .toUpperCase();
   }

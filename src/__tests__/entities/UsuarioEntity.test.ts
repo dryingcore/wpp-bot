@@ -48,7 +48,7 @@ describe('Usuario Entity', () => {
     const usuario = new Usuario('id-3', nome, endereco);
     usuario.atualizarNome(new NomeVO('Carlos', 'Oliveira'));
 
-    expect(usuario.nome.toString()).toBe('Carlos Oliveira'); // Sem erro, sem alteração visível
+    expect(usuario.nome.toString()).toBe('Carlos Oliveira');
   });
 
   it('deve atualizar o endereço do usuário se for diferente', () => {
