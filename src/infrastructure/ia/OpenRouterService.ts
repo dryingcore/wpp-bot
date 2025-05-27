@@ -1,4 +1,5 @@
 import { IntencaoVO } from '@/core/value-objects/IntencaoVO';
+import promptBase from '@/infrastructure/ia/prompt/prompt.json';
 
 type OpenRouterChatResponse = {
   choices: {
@@ -18,11 +19,7 @@ export class OpenRouterService {
     }
 
     const prompt = [
-      {
-        role: 'system',
-        content:
-          'Você é um analisador de frases para chatbot. Retorne apenas um JSON representando a intenção da frase do usuário, no formato: { "tipo": "consultar_funcionamento", "parametros": {} }. Não adicione explicações nem texto fora do JSON.',
-      },
+      ...promptBase,
       {
         role: 'user',
         content: frase,

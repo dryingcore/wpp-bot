@@ -8,7 +8,6 @@ export async function initWppClient() {
     session: 'ComandaBot',
     catchQR: base64Qr => {
       console.log('QR Code gerado:');
-      // Se quiser servir via frontend, armazene aqui
     },
     statusFind: status => {
       console.log('Status da sessão:', status);
