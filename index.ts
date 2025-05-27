@@ -1,22 +1,17 @@
-import { initWppClient } from '@/infrastructure/wpp/WppClient';
+import { WppClientAdapter } from '@/infrastructure/wpp/WppClientAdapter';
+import WppService from '@/core/services/WppService';
+
 import Fastify from 'fastify';
+import { WppController } from '@/infrastructure/http/controllers/wpp.controller';
 
-async function start() {
-  const fastify = Fastify({ logger: true });
+const app = Fastify({
+  logger: true,
+});
 
-  fastify.get('/health', async () => {
-    return { status: 'ok' };
-  });
+const wppService = new WppService(new WppClientAdapter());
+new WppController(app, wppService);
 
-  await initWppClient();
-
-  try {
-    await fastify.listen({ port: 3000, host: '0.0.0.0' });
-    console.log('Fastify rodando em http://localhost:3000');
-  } catch (err) {
-    fastify.log.error(err);
-    process.exit(1);
-  }
-}
-
-start();
+app.listen({ port: 3001 }, err => {
+  if (err) throw err;
+  console.log('Servidor escutando em http://localhost:3001');
+});
