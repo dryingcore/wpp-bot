@@ -1,15 +1,12 @@
+import Fastify from 'fastify';
 import { WppClientAdapter } from '@/infrastructure/wpp/WppClientAdapter';
 import WppService from '@/core/services/WppService';
+import registerWppRoutes from '@/infrastructure/http/routes/wpp.routes';
 
-import Fastify from 'fastify';
-import { WppController } from '@/infrastructure/http/controllers/wpp.controller';
-
-const app = Fastify({
-  logger: true,
-});
+const app = Fastify({ logger: true });
 
 const wppService = new WppService(new WppClientAdapter());
-new WppController(app, wppService);
+registerWppRoutes(app, wppService);
 
 app.listen({ port: 3001 }, err => {
   if (err) throw err;
