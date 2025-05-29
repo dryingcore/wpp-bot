@@ -4,16 +4,23 @@
   "type": "module",
   "private": true,
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "@types/pg": "^8.15.2",
+    "drizzle-kit": "^0.31.1"
   },
   "scripts": {
-    "start": "bun run index.ts"
+    "start": "bun run index.ts",
+    "drizzle:generate": "bunx drizzle-kit generate",
+    "drizzle:migrate": "bunx drizzle-kit migrate"
   },
   "peerDependencies": {
     "typescript": "^5"
   },
   "dependencies": {
     "@wppconnect-team/wppconnect": "^1.37.1",
-    "fastify": "^5.3.3"
+    "drizzle-orm": "^0.44.0",
+    "fastify": "^5.3.3",
+    "pg": "^8.16.0",
+    "zod": "^3.25.36"
   }
 }
