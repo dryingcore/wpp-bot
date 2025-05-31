@@ -6,6 +6,9 @@ EnvConfig.ensureAll();
 
 const pool = new Pool({
   connectionString: EnvConfig.getPostgresConnectionString(),
+  max: 10,
+  idleTimeoutMillis: 10_000,
+  connectionTimeoutMillis: 5_000,
 });
 
 export const db = drizzle(pool);
