@@ -1,10 +1,16 @@
+import { defineConfig } from 'drizzle-kit';
 import EnvConfig from '@/config/EnvConfig';
 
-export default {
-  schema: './src/infrastructure/db/schema.ts',
+export default defineConfig({
+  schema: './src/infrastructure/database/schema',
   out: './drizzle',
-  driver: 'pg',
+  dialect: 'postgresql',
   dbCredentials: {
-    connectionString: EnvConfig.getPostgresConnectionString(),
+    ssl: false,
+    host: EnvConfig.POSTGRES_HOST,
+    port: EnvConfig.POSTGRES_PORT,
+    user: EnvConfig.POSTGRES_USER,
+    password: EnvConfig.POSTGRES_PASSWORD,
+    database: EnvConfig.POSTGRES_DB,
   },
-};
+});

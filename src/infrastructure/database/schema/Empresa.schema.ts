@@ -1,7 +1,7 @@
 import { pgTable, uuid, varchar } from 'drizzle-orm/pg-core';
 
-export const cardapios = pgTable('cardapios', {
+export const empresas = pgTable('empresas', {
   id: uuid('id').primaryKey().defaultRandom(),
-  empresaId: uuid('empresa_id').notNull(),
   nome: varchar('nome', { length: 255 }).notNull(),
+  cnpj: varchar('cnpj', { length: 18 }).unique().notNull(),
 });
