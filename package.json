@@ -5,7 +5,7 @@
   "private": true,
   "devDependencies": {
     "@types/bun": "latest",
-    "@types/pg": "^8.15.2",
+    "@types/pg": "^8.15.4",
     "drizzle-kit": "^0.31.1"
   },
   "scripts": {
@@ -14,13 +14,13 @@
     "drizzle:migrate": "bunx drizzle-kit migrate"
   },
   "peerDependencies": {
-    "typescript": "^5"
+    "typescript": "^5.8.3"
   },
   "dependencies": {
-    "@wppconnect-team/wppconnect": "^1.37.1",
-    "drizzle-orm": "^0.44.0",
+    "@wppconnect-team/wppconnect": "^1.37.2",
+    "drizzle-orm": "^0.44.1",
     "fastify": "^5.3.3",
     "pg": "^8.16.0",
-    "zod": "^3.25.36"
+    "zod": "^3.25.48"
   }
 }
