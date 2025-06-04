@@ -27,7 +27,7 @@ export class WppClientAdapter implements IWppClient {
    *
    * @param sessionId - Identificador único da sessão.
    * @returns Promise que resolve quando a sessão estiver iniciada.
-   * @throws Caso haja falha na inicialização ou duplicidade de sessão.
+   * @throws Caso haja falha na inicialização.
    */
   async startSession(sessionId: string): Promise<void> {
     if (clients.has(sessionId)) return;
