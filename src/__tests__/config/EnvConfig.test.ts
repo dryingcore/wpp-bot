@@ -1,14 +1,32 @@
-import { describe, expect, it, beforeEach } from 'bun:test';
+import { describe, expect, it, beforeEach, afterEach } from 'bun:test';
 import EnvConfig from '@/config/EnvConfig';
 
 describe('EnvConfig', () => {
+  const originalEnv: Record<string, string | undefined> = {};
+
   beforeEach(() => {
+    originalEnv.OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
+    originalEnv.POSTGRES_HOST = process.env.POSTGRES_HOST;
+    originalEnv.POSTGRES_PORT = process.env.POSTGRES_PORT;
+    originalEnv.POSTGRES_DB = process.env.POSTGRES_DB;
+    originalEnv.POSTGRES_USER = process.env.POSTGRES_USER;
+    originalEnv.POSTGRES_PASSWORD = process.env.POSTGRES_PASSWORD;
+
     process.env.OPENROUTER_API_KEY = 'test-api-key';
     process.env.POSTGRES_HOST = 'localhost';
     process.env.POSTGRES_PORT = '5432';
     process.env.POSTGRES_DB = 'testdb';
     process.env.POSTGRES_USER = 'testuser';
     process.env.POSTGRES_PASSWORD = 'testpass';
+  });
+
+  afterEach(() => {
+    if (originalEnv.OPENROUTER_API_KEY === undefined) delete process.env.OPENROUTER_API_KEY; else process.env.OPENROUTER_API_KEY = originalEnv.OPENROUTER_API_KEY;
+    if (originalEnv.POSTGRES_HOST === undefined) delete process.env.POSTGRES_HOST; else process.env.POSTGRES_HOST = originalEnv.POSTGRES_HOST;
+    if (originalEnv.POSTGRES_PORT === undefined) delete process.env.POSTGRES_PORT; else process.env.POSTGRES_PORT = originalEnv.POSTGRES_PORT;
+    if (originalEnv.POSTGRES_DB === undefined) delete process.env.POSTGRES_DB; else process.env.POSTGRES_DB = originalEnv.POSTGRES_DB;
+    if (originalEnv.POSTGRES_USER === undefined) delete process.env.POSTGRES_USER; else process.env.POSTGRES_USER = originalEnv.POSTGRES_USER;
+    if (originalEnv.POSTGRES_PASSWORD === undefined) delete process.env.POSTGRES_PASSWORD; else process.env.POSTGRES_PASSWORD = originalEnv.POSTGRES_PASSWORD;
   });
 
   it('should read the correct values from process.env', () => {
