@@ -5,12 +5,14 @@ export default class ItemCardapio {
   private descricao?: string;
   private disponivel: boolean;
 
-  constructor(id: string, nome: string, preco: number, descricao: string, disponivel: boolean = true) {
+  constructor(id: string, nome: string, preco: number, descricao?: string, disponivel: boolean = true) {
     if (preco < 0) throw new Error('Preço inválido');
     this.id = id;
     this.nome = nome;
     this.preco = preco;
-    this.descricao = descricao;
+    if (descricao !== undefined) {
+      this.descricao = descricao;
+    }
     this.disponivel = disponivel;
   }
 
