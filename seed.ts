@@ -31,7 +31,7 @@ async function seed() {
       id: randomUUID(),
       empresaId,
       cardapioId,
-      nome: 'X-Burguer',
+      nome: 'X-Burger',
       descricao: 'Pão, carne e queijo',
       preco: '18.90',
       disponivel: true,
