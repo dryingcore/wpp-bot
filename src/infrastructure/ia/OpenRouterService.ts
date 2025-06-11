@@ -1,13 +1,6 @@
+import type { OpenRouterChatResponse } from '@/@types/OpenRouterChatResponse';
 import { IntencaoVO } from '@/core/value-objects/IntencaoVO';
 import promptBase from '@/infrastructure/ia/prompt/prompt.json';
-
-type OpenRouterChatResponse = {
-  choices: {
-    message: {
-      content: string;
-    };
-  }[];
-};
 
 export class OpenRouterService {
   private static readonly API_URL = 'https://openrouter.ai/api/v1/chat/completions';
